@@ -1,5 +1,10 @@
 {
     "name": "safir-infra",
+    "scripts": {
+        "test": "mocha -r ts-node/register ./**/*.spec.ts",
+        "preview": "pulumi preview",
+        "up": "pulumi up -y"
+    },
     "devDependencies": {
         "@types/chai": "^4.2.14",
         "@types/mocha": "^8.2.0",

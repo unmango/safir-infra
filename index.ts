@@ -7,7 +7,7 @@ const defaultRepoOptions: github.RepositoryArgs = {
     allowSquashMerge: true,
     autoInit: true,
     deleteBranchOnMerge: true,
-    gitignoreTemplate: 'wtfpl',
+    gitignoreTemplate: 'Node',
     hasIssues: true,
     hasProjects: false,
     hasWiki: false,

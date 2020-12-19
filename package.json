@@ -15,7 +15,8 @@
         "eslint": "^7.16.0",
         "eslint-config-prettier": "^7.1.0",
         "mocha": "^8.2.1",
-        "prettier": "^2.2.1"
+        "prettier": "^2.2.1",
+        "ts-node": "^7.0.1"
     },
     "dependencies": {
         "@pulumi/github": "^2.4.0",

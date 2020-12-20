@@ -1,0 +1,4 @@
+config:
+  github:organization: unmango
+  github:token:
+    secure: AAABACP4ESYM8VUxXqmSZpYSNN08O2Pkkz9Xq0sFKfbceOkEYty7RXi7ZEk3CubhbB4VDWAVpsH92s+rPDvP0vcgwKtqDPJN

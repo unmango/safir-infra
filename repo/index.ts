@@ -14,6 +14,11 @@ export const defaultRepoOptions: github.RepositoryArgs = {
 };
 
 export function safirRepo(name: string, args: github.RepositoryArgs = defaultRepoOptions): github.Repository {
+  const sfName = `safir-${name}`;
   // Name should be overwritten if supplied
-  return new github.Repository(name, { name, ...defaultRepoOptions, ...args });
+  return new github.Repository(sfName, {
+    name: args.name ?? sfName,
+    ...defaultRepoOptions,
+    ...args,
+  });
 }

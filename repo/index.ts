@@ -31,4 +31,12 @@ export function safirRepo(
   );
 }
 
+export function repoFile(name: string, repo: github.Repository, fileName: string, content: string): void {
+  const _ = new github.RepositoryFile(name, {
+    repository: repo.name,
+    file: fileName,
+    content,
+  });
+}
+
 export * from './safirRepository';

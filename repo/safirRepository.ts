@@ -13,7 +13,7 @@ export class SafirRepository extends pulumi.ComponentResource {
     private opts?: pulumi.ComponentResourceOptions) {
     super('unmango:safir:repo', name, undefined, opts);
 
-    this.repo = safirRepo(this.name, this.args);
+    this.repo = safirRepo(this.name, this.args, { parent: this });
 
     this.registerOutputs();
   }

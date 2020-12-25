@@ -30,3 +30,5 @@ export function safirRepo(
     opts,
   );
 }
+
+export * from './safirRepository';

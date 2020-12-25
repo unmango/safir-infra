@@ -5,7 +5,7 @@ import { safirRepo } from './index';
 export class SafirRepository extends pulumi.ComponentResource {
 
   public readonly repo: github.Repository;
-  public readonly files: github.RepositoryFile[];
+  public readonly files: github.RepositoryFile[] = [];
 
   constructor(
     private name: string,

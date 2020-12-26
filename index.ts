@@ -1,7 +1,7 @@
 import * as pulumi from '@pulumi/pulumi';
-import { safirRepo } from './repo';
+import { SafirRepository } from './repo';
 
-const cli = safirRepo('cli', {
+const cli = new SafirRepository('cli', {
   description: 'The Safir CLI tool',
   gitignoreTemplate: 'VisualStudio',
 });

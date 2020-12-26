@@ -1,4 +1,5 @@
 import * as github from '@pulumi/github';
+import * as pulumi from '@pulumi/pulumi';
 
 export const defaultRepoOptions: github.RepositoryArgs = {
   allowMergeCommit: false,
@@ -13,12 +14,21 @@ export const defaultRepoOptions: github.RepositoryArgs = {
   licenseTemplate: 'wtfpl',
 };
 
-export function safirRepo(name: string, args: github.RepositoryArgs = defaultRepoOptions): github.Repository {
+export function safirRepo(
+  name: string,
+  args: github.RepositoryArgs = defaultRepoOptions,
+  opts?: pulumi.CustomResourceOptions): github.Repository {
   const sfName = `safir-${name}`;
-  
-  return new github.Repository(sfName, {
-    name: args.name ?? sfName,
-    ...defaultRepoOptions,
-    ...args,
-  });
+
+  return new github.Repository(
+    sfName,
+    {
+      name: args.name ?? sfName,
+      ...defaultRepoOptions,
+      ...args,
+    },
+    opts,
+  );
 }
+
+export * from './safirRepository';

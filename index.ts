@@ -10,3 +10,8 @@ const manager = new SafirRepository('manager', {
   description: 'Safir manager service',
   gitignoreTemplate: 'VisualStudio',
 });
+
+const agent = new SafirRepository('agent', {
+  description: 'Safir agent service',
+  gitignoreTemplate: 'VisualStudio',
+});

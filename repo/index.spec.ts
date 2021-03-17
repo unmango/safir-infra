@@ -1,9 +1,8 @@
 import { expect } from 'chai';
 import * as chai from 'chai';
-import * as chaiString from 'chai-string';
+import chaiString from 'chai-string';
 import * as pulumi from '@pulumi/pulumi';
 import { expectOutput } from './helpers.spec';
-import { all } from '@pulumi/pulumi';
 
 chai.use(chaiString);
 

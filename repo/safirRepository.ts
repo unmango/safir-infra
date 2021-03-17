@@ -1,6 +1,5 @@
 import * as github from '@pulumi/github';
 import * as pulumi from '@pulumi/pulumi';
-import { safirRepo } from './index';
 
 const defaultRepoOptions: github.RepositoryArgs = {
   allowMergeCommit: false,

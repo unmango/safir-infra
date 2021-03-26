@@ -1,0 +1,24 @@
+name: Pulumi
+on:
+  push:
+    branches: [main]
+jobs:
+  up:
+    name: Update
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 1
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 15
+    - name: Install Pulumi CLI
+      uses: pulumi/action-install-pulumi-cli@v1.0.1
+    - run: npm install
+    - uses: pulumi/actions@v2
+      with:
+        command: up
+        stack-name: prod
+      env:
+        PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}

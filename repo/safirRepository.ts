@@ -36,6 +36,11 @@ export class SafirRepository extends pulumi.ComponentResource {
     }, { parent: this });
 
     if (args?.files) {
+      const pulumiBranch = new github.Branch('pulumi', {
+        branch: 'pulumi',
+        repository: this.repo.name,
+      }, { parent: this });
+
       this.files = args.files.map(x => {
         const { file, dest } = x;
 
@@ -43,11 +48,13 @@ export class SafirRepository extends pulumi.ComponentResource {
           throw new Error(`Invalid file ${file}`);
         }
 
-        const content = pulumi.output(fsasync.readFile(file)).apply(x => x.toString());
+        const content = pulumi.output(fsasync.readFile(file))
+          .apply(x => x.toString());
 
         const fileName = path.basename(file);
         return new github.RepositoryFile(fileName, {
           repository: this.repo.name,
+          branch: pulumiBranch.branch,
           file: dest.endsWith(fileName) ? dest : path.join(dest, fileName),
           content,
         }, { parent: this });

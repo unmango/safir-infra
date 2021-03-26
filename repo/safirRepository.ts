@@ -48,8 +48,9 @@ export class SafirRepository extends pulumi.ComponentResource {
           throw new Error(`Invalid file ${file}`);
         }
 
-        const content = pulumi.output(fsasync.readFile(file))
-          .apply(x => x.toString());
+        const content = pulumi.output(fsasync.readFile(
+          path.resolve(file),
+          { encoding: 'utf8' }));
 
         const fileName = path.basename(file);
         return new github.RepositoryFile(fileName, {

@@ -14,4 +14,14 @@ const manager = new SafirRepository('manager', {
 const agent = new SafirRepository('agent', {
   description: 'Safir agent service',
   gitignoreTemplate: 'VisualStudio',
+  files: [{
+    file: './repo/dotnet/global.json',
+    dest: './',
+  }, {
+    file: './repo/dotnet/NuGet.Config',
+    dest: './',
+  }, {
+    file: './repo/dotnet/.editorconfig',
+    dest: './',
+  }],
 });

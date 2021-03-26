@@ -1,3 +1,6 @@
+import * as fs from 'fs';
+import * as fsasync from 'fs/promises';
+import * as path from 'path';
 import * as github from '@pulumi/github';
 import * as pulumi from '@pulumi/pulumi';
 
@@ -32,6 +35,32 @@ export class SafirRepository extends pulumi.ComponentResource {
       ...args,
     }, { parent: this });
 
+    if (args?.files) {
+      const pulumiBranch = new github.Branch('pulumi', {
+        branch: 'pulumi',
+        repository: this.repo.name,
+      }, { parent: this });
+
+      this.files = args.files.map(x => {
+        const { file, dest } = x;
+
+        if (!fs.existsSync(file)) {
+          throw new Error(`Invalid file ${file}`);
+        }
+
+        const content = pulumi.output(fsasync.readFile(file))
+          .apply(x => x.toString());
+
+        const fileName = path.basename(file);
+        return new github.RepositoryFile(fileName, {
+          repository: this.repo.name,
+          branch: pulumiBranch.branch,
+          file: dest.endsWith(fileName) ? dest : path.join(dest, fileName),
+          content,
+        }, { parent: this });
+      });
+    }
+
     this.registerOutputs();
   }
 
@@ -40,4 +69,5 @@ export class SafirRepository extends pulumi.ComponentResource {
 export interface SafirRepositoryArgs {
   description?: string;
   gitignoreTemplate?: 'VisualStudio' | 'Node';
+  files?: { file: string, dest: string }[];
 }

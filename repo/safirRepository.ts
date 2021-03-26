@@ -46,7 +46,7 @@ export class SafirRepository extends pulumi.ComponentResource {
         const content = pulumi.output(fsasync.readFile(file)).apply(x => x.toString());
 
         const fileName = path.basename(file);
-        return new github.RepositoryFile(path.normalize(file), {
+        return new github.RepositoryFile(fileName, {
           repository: this.repo.name,
           file: dest.endsWith(fileName) ? dest : path.join(dest, path.basename(file)),
           content,

@@ -24,6 +24,6 @@
     },
     "dependencies": {
         "@pulumi/github": "^3.3.1",
-        "@pulumi/pulumi": "^2.24.1"
+        "@pulumi/pulumi": "^2.25.0"
     }
 }

@@ -43,9 +43,9 @@ const common = new SafirRepository('common', {
     dest: './.github/',
   }, {
     file: './repo/dotnet/.github/workflows/package_publish.yml',
-    dest: './.github/workflows/',
+    dest: './.github/',
   }, {
     file: './repo/dotnet/.github/workflows/pull_request.yml',
-    dest: './.github/workflows/',
+    dest: './.github/',
   }],
 });

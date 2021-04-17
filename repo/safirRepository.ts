@@ -56,7 +56,9 @@ export class SafirRepository extends pulumi.ComponentResource {
         return new github.RepositoryFile(`${name}-${fileName}`, {
           repository: this.repo.name,
           branch: pulumiBranch.branch,
-          file: dest.endsWith(fileName) ? dest : path.join(dest, fileName),
+          file: dest.endsWith(fileName) || !!path.extname(dest)
+            ? dest
+            : path.join(dest, fileName),
           content,
         }, { parent: this });
       });

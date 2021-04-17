@@ -25,3 +25,27 @@ const agent = new SafirRepository('agent', {
     dest: './',
   }],
 });
+
+const common = new SafirRepository('common', {
+  description: 'Safir common packages',
+  gitignoreTemplate: 'VisualStudio',
+  files: [{
+    file: './repo/dotnet/global.json',
+    dest: './',
+  }, {
+    file: './repo/dotnet/NuGet.Config',
+    dest: './',
+  }, {
+    file: './repo/dotnet/.editorconfig',
+    dest: './',
+  }, {
+    file: './repo/dotnet/.github/dependabot.yml',
+    dest: './.github/',
+  }, {
+    file: './repo/dotnet/.github/workflows/package_publish.yml',
+    dest: './.github/workflows/',
+  }, {
+    file: './repo/dotnet/.github/workflows/pull_request.yml',
+    dest: './.github/workflows/',
+  }],
+});

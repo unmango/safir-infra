@@ -3,6 +3,7 @@ on:
 - pull_request
 jobs:
   preview:
+    if: github.actor != 'dependabot[bot]'
     name: Preview
     runs-on: ubuntu-latest
     steps:

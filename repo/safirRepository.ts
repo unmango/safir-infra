@@ -36,7 +36,7 @@ export class SafirRepository extends pulumi.ComponentResource {
     }, { parent: this });
 
     if (args?.files) {
-      const pulumiBranch = new github.Branch('pulumi', {
+      const pulumiBranch = new github.Branch(`${name}-pulumi`, {
         branch: 'pulumi',
         repository: this.repo.name,
       }, { parent: this });
@@ -53,7 +53,7 @@ export class SafirRepository extends pulumi.ComponentResource {
           { encoding: 'utf8' }));
 
         const fileName = path.basename(file);
-        return new github.RepositoryFile(fileName, {
+        return new github.RepositoryFile(`${name}-${fileName}`, {
           repository: this.repo.name,
           branch: pulumiBranch.branch,
           file: dest.endsWith(fileName) ? dest : path.join(dest, fileName),

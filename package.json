@@ -23,7 +23,7 @@
         "ts-node": "^9.1.1"
     },
     "dependencies": {
-        "@pulumi/github": "^4.1.0",
+        "@pulumi/github": "^4.2.0",
         "@pulumi/pulumi": "^3.4.0"
     }
 }

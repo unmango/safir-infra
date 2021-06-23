@@ -49,3 +49,8 @@ const common = new SafirRepository('common', {
     dest: './.github/',
   }],
 });
+
+const ui = new SafirRepository('ui', {
+  description: 'Safir frontend',
+  gitignoreTemplate: 'Node',
+});

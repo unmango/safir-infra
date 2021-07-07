@@ -6,7 +6,7 @@
         "up": "pulumi up -y"
     },
     "devDependencies": {
-        "@types/chai": "^4.2.19",
+        "@types/chai": "^4.2.20",
         "@types/chai-string": "^1.4.2",
         "@types/mocha": "^8.2.3",
         "@types/node": "^15.14.0",

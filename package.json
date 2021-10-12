@@ -20,7 +20,7 @@
         "mocha": "^9.1.2",
         "prettier": "^2.4.1",
         "sinon": "^11.1.2",
-        "ts-node": "^10.2.1"
+        "ts-node": "^10.3.0"
     },
     "dependencies": {
         "@pulumi/github": "^4.5.0",
